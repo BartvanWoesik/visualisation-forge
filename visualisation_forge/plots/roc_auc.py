@@ -7,6 +7,22 @@ from visualisation_forge.plots.base import Plots
 
 
 class ROCPlot(Plots):
+    """
+    Class for creating and saving ROC plots.
+
+    Args:
+        y (array-like): True labels.
+        pred_proba (array-like): Predicted probabilities.
+        split_name (str): Name of the split.
+        folder (str): Path to the folder where the plot will be saved.
+
+    Attributes:
+        y (array-like): True labels.
+        pred_proba (array-like): Predicted probabilities.
+        file_name (str): Name of the plot file.
+        path (str): Path to the folder where the plot will be saved.
+    """
+
     def __init__(self, **kwargs):
         self.y = kwargs.get("y")
         self.pred_proba = kwargs.get("pred_proba")
@@ -14,10 +30,16 @@ class ROCPlot(Plots):
         self.path = kwargs.get("folder")
 
     def create_and_write(self):
+        """
+        Create and save the ROC plot.
+        """
         self.create_image()
         self.write()
 
     def create_image(self):
+        """
+        Create the ROC plot.
+        """
         fpr, tpr, _ = roc_curve(self.y, self.pred_proba[:, 1])
         roc_auc = auc(fpr, tpr)
 
@@ -38,6 +60,9 @@ class ROCPlot(Plots):
         plt.legend(loc="lower right")
 
     def write(self):
+        """
+        Save the ROC plot to a file.
+        """
         os.makedirs(self.path, exist_ok=True)
         plt.savefig(self.path + "/roc_auc/" + self.file_name)
         plt.close()

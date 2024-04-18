@@ -2,6 +2,10 @@ from abc import ABCMeta, abstractmethod
 
 
 class Plots(metaclass=ABCMeta):
+    """
+    Abstract base class for creating plots.
+    """
+
     _implementations: dict[str, callable] = {}
 
     @abstractmethod

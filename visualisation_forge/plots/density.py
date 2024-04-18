@@ -7,6 +7,10 @@ from visualisation_forge.plots.base import Plots
 
 
 class DensityPlot(Plots):
+    """
+    Class for creating and saving a density plot of predicted probabilities.
+    """
+
     def __init__(self, **kwargs):
         self.y = kwargs.get("y")
         self.pred_proba = kwargs.get("pred_proba")
@@ -15,10 +19,16 @@ class DensityPlot(Plots):
         self.threshold = 0.5
 
     def create_and_write(self):
+        """
+        Creates the density plot and saves it to a file.
+        """
         self.create_image()
         self.write()
 
     def create_image(self):
+        """
+        Creates the density plot using seaborn.
+        """
         pred_1 = [
             x if y > self.threshold else 0
             for x, y in zip(self.pred_proba[:, 1], self.y)
@@ -31,7 +41,6 @@ class DensityPlot(Plots):
         ]
         pred_0 = [x for x in pred_0 if x != 0]
 
-        # Create a density plot using seaborn
         sns.kdeplot(pred_0, fill=True)
         sns.kdeplot(pred_1, fill=True)
         plt.xlabel("Probability")
@@ -39,6 +48,9 @@ class DensityPlot(Plots):
         plt.title("Density Plot of Predicted Probabilities")
 
     def write(self):
+        """
+        Writes the density plot to a file.
+        """
         os.makedirs(self.path, exist_ok=True)
         plt.savefig(self.path + "/density/" + self.file_name)
         plt.close()
