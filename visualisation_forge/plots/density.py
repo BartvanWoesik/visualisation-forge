@@ -3,14 +3,14 @@ import os
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-from plots.base import Plots
+from visualisation_forge.plots.base import Plots
 
 
 class DensityPlot(Plots):
     def __init__(self, **kwargs):
         self.y = kwargs.get("y")
         self.pred = kwargs.get("pred")
-        self.file_name = kwargs.get("split") + "_density_plot.png"
+        self.file_name = kwargs.get("split_name") + "_density_plot.png"
         self.path = "ims/density"
         self.threshold = 0.5
 

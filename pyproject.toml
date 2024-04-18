@@ -34,9 +34,12 @@ markers = [
     "plots: Use this mark for all tests that produce plots",
     "asyncio: Use this mark for all tests concerning async callables"
 ]
+
 log_cli = "true"
 log_level = "DEBUG"
 log_format = "%(asctime)s %(name)s %(levelname)s %(message)s"
 log_date_format = "%Y-%m-%d %H:%M:%S"
-
 addopts = "--cov=model_forge --cov-report xml --cov-report term-missing"
+
+[tool.ruff]
+ignore = ['F401']

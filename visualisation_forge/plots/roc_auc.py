@@ -3,14 +3,14 @@ import os
 import matplotlib.pyplot as plt
 from sklearn.metrics import roc_curve, auc
 
-from plots.base import Plots
+from visualisation_forge.plots.base import Plots
 
 
 class ROCPlot(Plots):
     def __init__(self, **kwargs):
         self.y = kwargs.get("y")
         self.pred = kwargs.get("pred")
-        self.file_name = kwargs.get("split") + "_roc_plot.png"
+        self.file_name = kwargs.get("split_name") + "_roc_plot.png"
         self.path = "ims/roc"
 
     def create_and_write(self):
