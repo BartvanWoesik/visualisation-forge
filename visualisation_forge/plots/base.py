@@ -5,11 +5,11 @@ class Plots(metaclass=ABCMeta):
     _implementations: dict[str, callable] = {}
 
     @abstractmethod
-    def create_image(self, data):
+    def create_image(self):
         ...
 
     @abstractmethod
-    def write(self, path):
+    def write(self):
         ...
 
     def __init_subclass__(cls) -> None:
