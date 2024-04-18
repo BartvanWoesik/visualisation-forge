@@ -1,0 +1,8 @@
+site_name: Model Forge
+nav:
+  - Home: index.md
+theme: material
+
+
+plugins:
+  - search
