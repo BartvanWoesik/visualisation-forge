@@ -9,16 +9,16 @@ from visualisation_forge.plots.base import Plots
 class ROCPlot(Plots):
     def __init__(self, **kwargs):
         self.y = kwargs.get("y")
-        self.pred = kwargs.get("pred")
+        self.pred_proba = kwargs.get("pred_proba")
         self.file_name = kwargs.get("split_name") + "_roc_plot.png"
-        self.path = "ims/roc"
+        self.path = kwargs.get("folder")
 
     def create_and_write(self):
         self.create_image()
         self.write()
 
     def create_image(self):
-        fpr, tpr, _ = roc_curve(self.y, self.pred)
+        fpr, tpr, _ = roc_curve(self.y, self.pred_proba[:, 1])
         roc_auc = auc(fpr, tpr)
 
         plt.figure()
@@ -39,5 +39,5 @@ class ROCPlot(Plots):
 
     def write(self):
         os.makedirs(self.path, exist_ok=True)
-        plt.savefig(self.path + "/" + self.file_name)
+        plt.savefig(self.path + "/roc_auc/" + self.file_name)
         plt.close()

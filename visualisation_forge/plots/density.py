@@ -9,9 +9,9 @@ from visualisation_forge.plots.base import Plots
 class DensityPlot(Plots):
     def __init__(self, **kwargs):
         self.y = kwargs.get("y")
-        self.pred = kwargs.get("pred")
+        self.pred_proba = kwargs.get("pred_proba")
         self.file_name = kwargs.get("split_name") + "_density_plot.png"
-        self.path = "ims/density"
+        self.path = kwargs.get("folder")
         self.threshold = 0.5
 
     def create_and_write(self):
@@ -19,10 +19,16 @@ class DensityPlot(Plots):
         self.write()
 
     def create_image(self):
-        pred_1 = [x if y > self.threshold else 0 for x, y in zip(self.pred, self.y)]
+        pred_1 = [
+            x if y > self.threshold else 0
+            for x, y in zip(self.pred_proba[:, 1], self.y)
+        ]
         pred_1 = [x for x in pred_1 if x != 0]
 
-        pred_0 = [x if y < self.threshold else 0 for x, y in zip(self.pred, self.y)]
+        pred_0 = [
+            x if y < self.threshold else 0
+            for x, y in zip(self.pred_proba[:, 1], self.y)
+        ]
         pred_0 = [x for x in pred_0 if x != 0]
 
         # Create a density plot using seaborn
@@ -34,5 +40,5 @@ class DensityPlot(Plots):
 
     def write(self):
         os.makedirs(self.path, exist_ok=True)
-        plt.savefig(self.path + "/" + self.file_name)
+        plt.savefig(self.path + "/density/" + self.file_name)
         plt.close()
