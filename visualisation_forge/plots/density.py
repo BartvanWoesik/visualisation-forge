@@ -15,15 +15,8 @@ class DensityPlot(Plots):
         self.y = kwargs.get("y")
         self.pred_proba = kwargs.get("pred_proba")
         self.file_name = kwargs.get("split_name") + "_density_plot.png"
-        self.path = kwargs.get("folder")
+        self.path = kwargs.get("folder") + "/density/"
         self.threshold = 0.5
-
-    def create_and_write(self):
-        """
-        Creates the density plot and saves it to a file.
-        """
-        self.create_image()
-        self.write()
 
     def create_image(self):
         """
@@ -52,5 +45,5 @@ class DensityPlot(Plots):
         Writes the density plot to a file.
         """
         os.makedirs(self.path, exist_ok=True)
-        plt.savefig(self.path + "/density/" + self.file_name)
+        plt.savefig(self.path + self.file_name)
         plt.close()

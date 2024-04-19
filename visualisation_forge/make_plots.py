@@ -7,7 +7,7 @@ class MakePlots:
     """
 
     @staticmethod
-    def make_and_write_plots(folder, X, y, pred, pred_proba, split_name):
+    def make_and_write_plots(model, folder, X, y, pred, pred_proba, split_name):
         """
         Stuff we could get:
             - y
@@ -23,6 +23,7 @@ class MakePlots:
         for _, plot_func in Plots._implementations.items():
             try:
                 plot_instance = plot_func(
+                    model=model,
                     folder=folder,
                     pred=pred,
                     X=X,

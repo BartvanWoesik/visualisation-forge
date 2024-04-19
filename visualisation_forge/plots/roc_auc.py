@@ -27,14 +27,7 @@ class ROCPlot(Plots):
         self.y = kwargs.get("y")
         self.pred_proba = kwargs.get("pred_proba")
         self.file_name = kwargs.get("split_name") + "_roc_plot.png"
-        self.path = kwargs.get("folder")
-
-    def create_and_write(self):
-        """
-        Create and save the ROC plot.
-        """
-        self.create_image()
-        self.write()
+        self.path = kwargs.get("folder") + "/roc_auc/"
 
     def create_image(self):
         """
@@ -64,5 +57,5 @@ class ROCPlot(Plots):
         Save the ROC plot to a file.
         """
         os.makedirs(self.path, exist_ok=True)
-        plt.savefig(self.path + "/roc_auc/" + self.file_name)
+        plt.savefig(self.path + self.file_name)
         plt.close()
