@@ -3,7 +3,7 @@ import os
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-from visualisation_forge.i_plots import IPlots
+from interfaces.plots import IPlots
 
 
 class DensityPlot(IPlots):

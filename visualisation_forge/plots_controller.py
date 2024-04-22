@@ -1,15 +1,7 @@
-from abc import ABCMeta, abstractmethod
+from interfaces.command import ICommand
 
 
-class Command(metaclass=ABCMeta):
-    """Interface for command structuring"""
-    @abstractmethod
-    def execute(self, on: any):
-        """Executes a command"""
-        pass
-
-
-class MethodCommand(Command):
+class MethodCommand(ICommand):
     """Class to execute commands on an object"""
     def __init__(self, method: str, *args, **kwargs):
         self.method = method
@@ -24,7 +16,7 @@ class MethodCommand(Command):
 class CommandControl:
     """Implements the execution orchestration of the commands"""
     @staticmethod
-    def operate_cmd_sequence(obj: any, commands: list[Command]):
+    def operate_cmd_sequence(obj: any, commands: list[ICommand]):
         """Executes a list of commands on an object"""
         for command in commands:
             command.execute(obj)

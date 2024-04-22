@@ -14,4 +14,5 @@ plots:
     commands:
       create_image: {}
       write: {}
+#      annotate: {}
 #      create_and_write: {}

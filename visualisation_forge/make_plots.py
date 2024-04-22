@@ -1,6 +1,6 @@
 import traceback
 
-from visualisation_forge.i_plots import IPlots
+from interfaces.plots import IPlots
 from config_parser import ConfigParser
 from plots_controller import CommandControl, MethodCommand
 
@@ -17,4 +17,3 @@ def main(plot_config_path: str | None = None):
                                                 commands=command_sequence)
         except Exception as e:
             print(f"Failed to create or write {figure} plot. Error: {str(e)},\ntraceback: {traceback.format_exc()}")
-

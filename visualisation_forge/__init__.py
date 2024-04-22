@@ -1,7 +1,8 @@
 from figures import *
+from interfaces import *
 
 __all__ = [
-    'i_plots.py',
+    # 'plots',
     'make_plots',
-    'plots_controller.py'
+    'plots_controller'
 ]
