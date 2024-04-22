@@ -1,1 +1,7 @@
-import visualisation_forge.plots
+from figures import *
+
+__all__ = [
+    'interfaces',
+    'make_plots',
+    'make_orchestrator'
+]

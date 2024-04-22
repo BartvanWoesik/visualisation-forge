@@ -3,7 +3,7 @@ import os
 import matplotlib.pyplot as plt
 from sklearn.metrics import roc_curve, auc
 
-from visualisation_forge.plots.base import Plots
+from visualisation_forge.interfaces import Plots
 
 
 class ROCPlot(Plots):
