@@ -3,10 +3,10 @@ import os
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-from visualisation_forge.interfaces import Plots
+from visualisation_forge.i_plots import IPlots
 
 
-class DensityPlot(Plots):
+class DensityPlot(IPlots):
     """
     Class for creating and saving a density plot of predicted probabilities.
     """

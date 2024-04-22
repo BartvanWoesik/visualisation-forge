@@ -1,14 +1,14 @@
 from abc import ABCMeta, abstractmethod
 
 
-class Plots(metaclass=ABCMeta):
+class IPlots(metaclass=ABCMeta):
     """
     Abstract base class for creating plots.
     """
     implementations: dict[str, callable] = {}
 
     def __init_subclass__(cls) -> None:
-        Plots.implementations[cls.__name__] = cls
+        IPlots.implementations[cls.__name__] = cls
 
     @abstractmethod
     def create_image(self) -> any:

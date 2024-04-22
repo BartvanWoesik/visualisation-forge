@@ -3,10 +3,10 @@ import os
 import matplotlib.pyplot as plt
 from sklearn.metrics import roc_curve, auc
 
-from visualisation_forge.interfaces import Plots
+from visualisation_forge.i_plots import IPlots
 
 
-class ROCPlot(Plots):
+class ROCPlot(IPlots):
     """
     Class for creating and saving ROC plots.
 

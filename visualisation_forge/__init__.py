@@ -1,7 +1,7 @@
 from figures import *
 
 __all__ = [
-    'interfaces',
+    'i_plots.py',
     'make_plots',
-    'make_orchestrator'
+    'plots_controller.py'
 ]
