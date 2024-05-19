@@ -1,14 +1,14 @@
 plots:
   DensityPlot:
     init_kwargs:
-      y:
-        - 0
-        - 0
-        - 1
-      pred_proba:
-        - 0.1
-        - 0.1
-        - 0.8
+#      y:
+#        - 0
+#        - 0
+#        - 1
+#      pred_proba:
+#        - 0.1
+#        - 0.1
+#        - 0.8
       file_prefix: 'density'
       folder_path: 'ims'
     commands:

@@ -11,7 +11,7 @@ class DensityPlot(IPlots):
     Class for creating and saving a density plot of predicted probabilities.
     """
 
-    def __init__(self, y, pred_proba, file_prefix: str = '',       folder_path: str = '', threshold: float = 0.5):
+    def __init__(self, y, pred_proba, file_prefix: str = '', folder_path: str = '', threshold: float = 0.5):
         self.y = [y]
         self.pred_proba = [pred_proba]
         self.file_name = f"{file_prefix}_density_plot.png"
